@@ -1,0 +1,47 @@
+<nav class="navbar">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../">
+        <img src="../images/bulma.png" alt="Logo">
+      </a>
+      <span class="navbar-burger burger" data-target="navbarMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="navbarMenu" class="navbar-menu">
+      <div class="navbar-end">
+        <a href="{{ path_for('home') }}" class="navbar-item is-active">
+          Home
+        </a>
+        {% if not auth.check %}
+        <a href="{{ path_for('auth.login') }}" class="navbar-item is-active">
+          Login
+        </a>
+        <a href="{{ path_for('auth.register') }}" class="navbar-item is-active">
+          Registrar
+        </a>
+        {% else %}
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              Marcus Pereira
+            </a>
+            <div class="navbar-dropdown">
+              <a class="navbar-item" href="{{ path_for('post.create') }}">
+                Dashboard
+              </a>
+              <a class="navbar-item" href="{{ path_for('user.avatar') }}">
+                  Avatar
+              </a>
+              <hr class="navbar-divider">
+              <a class="navbar-item" href="{{ path_for('auth.logout') }}">
+                Sair
+              </a>
+            </div>
+          </div>    
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</nav>
