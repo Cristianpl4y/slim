@@ -15,10 +15,13 @@ $app = new Slim\App();
 
 $container = $app->getContainer(); // Aqui crio o Array.
 
+//aqui crio o conteiner passando o ola como chave que retorna a string.
+$container['Ola'] = "Olá, mundo :)";
+
 //aqui eu passo a chave e o valor que é a função e essa mesma função retorna uma instacia da classe controller.
 $container['HomeController'] = function($container){
     // retornando a Instacia do meu Controller.
-    return new App\Controllers\HomeController;
+    return new App\Controllers\HomeController($container);
 };
 
 //Importando o arquivo de rotas
