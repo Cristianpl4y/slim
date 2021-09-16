@@ -19,6 +19,20 @@ $app = new Slim\App([
 
 $container = $app->getContainer(); // Aqui crio o Array.
 
+//configurando o Twig template
+$container['view'] = function($container){
+    $view = new Slim\Views\Twig(__DIR__ . '/../resources/views', [
+        'cache' => false,
+    ]);
+
+    $view->addExtension(new Slim\Views\TwigExtension(
+        $container->router,
+        $container->request->getUri()
+    ));
+
+    return $view;
+};
+
 //aqui crio o conteiner passando o ola como chave que retorna a string.
 $container['Ola'] = "Olá, mundo :)";
 

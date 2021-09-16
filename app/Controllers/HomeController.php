@@ -8,6 +8,6 @@ Class HomeController extends Controller
 {
     public function index($request, $response)
     {
-        return $response->write($this->container->Ola);
+        return $this->container->view->render($response, 'teste.twig');
     }
 }
