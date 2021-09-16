@@ -8,10 +8,16 @@ require __DIR__ . '/../vendor/autoload.php';
 //Instanciando a Aplicação slim
 $app = new Slim\App();
 
-$container = $app->getContainer();
+/**
+ * O Slim trabalha com Conteiners esses conteiners, armazenam valores.
+ * podemos dizer que esses conteiners são como arrays.
+ */
 
+$container = $app->getContainer(); // Aqui crio o Array.
 
+//aqui eu passo a chave e o valor que é a função e essa mesma função retorna uma instacia da classe controller.
 $container['HomeController'] = function($container){
+    // retornando a Instacia do meu Controller.
     return new App\Controllers\HomeController;
 };
 
