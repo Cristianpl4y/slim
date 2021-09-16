@@ -6,7 +6,11 @@ date_default_timezone_set('America/Sao_Paulo');
 //Importando arquivo de autoload
 require __DIR__ . '/../vendor/autoload.php';
 //Instanciando a Aplicação slim
-$app = new Slim\App();
+$app = new Slim\App([
+    'settings' => [
+        'displayErrorDetails' => true
+    ]
+]);
 
 /**
  * O Slim trabalha com Conteiners esses conteiners, armazenam valores.
