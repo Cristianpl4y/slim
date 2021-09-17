@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\Controller;
 use App\Models\User;
+use DateTime;
 
 Class AuthController extends Controller
 {
@@ -18,14 +19,16 @@ Class AuthController extends Controller
         if($request->isGet())
         return $this->container->view->render($response, 'register.twig');
 
-        $data = date('d/m/Y');
-        $now = implode("-",array_reverse(explode("/",$data)));
+        
+        $now = new \DateTime();
+        $now->modify('+1 hour');
+        $key = bin2hex(random_bytes(20));
 
         User::create([
             'name' => $request->getParam('name'),
             'email' => $request->getParam('email'),
-            'password' => $request->getParam('password'),
-            'confirmation_key' => 'aaskfpaskf',
+            'password' => password_hash($request->getParam('password'), PASSWORD_DEFAULT),
+            'confirmation_key' => $key,
             'confirmation_expires' => $now,
         ]);
 
