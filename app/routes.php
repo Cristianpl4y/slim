@@ -8,6 +8,6 @@
  */
 $app->get('/', 'HomeController:index')->setName('home');
 
-//Criando rota de autenticação 
-$app->get('/login', '')->setName('auth.login');
-$app->get('/registrar', '')->setName('auth.register');
+//Criando rotas de autenticação 
+$app->get('/login', 'AuthController:login')->setName('auth.login');
+$app->get('/registrar', 'AuthController:register')->setName('auth.register');

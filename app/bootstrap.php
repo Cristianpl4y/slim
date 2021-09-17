@@ -42,6 +42,12 @@ $container['HomeController'] = function($container){
     return new App\Controllers\HomeController($container);
 };
 
+// criando cointainer para autenticação
+$container['AuthController'] = function($container){
+    // retornando a Instacia do meu Controller.
+    return new App\Controllers\AuthController($container);
+};
+
 //Importando o arquivo de rotas
 require __DIR__ . '/routes.php';
 
