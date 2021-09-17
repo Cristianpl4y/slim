@@ -67,6 +67,9 @@ $container['AuthController'] = function($container){
     return new App\Controllers\AuthController($container);
 };
 
+// Adicionando Middleware porem esta com erro !!!! tem que ver oq é !!!!
+$app->add(new App\Middleware\DisplayInputErrorsMiddleware($container));
+
 //Importando o arquivo de rotas
 require __DIR__ . '/routes.php';
 
