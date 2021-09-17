@@ -12,32 +12,15 @@
     </div>
     <div id="navbarMenu" class="navbar-menu">
       <div class="navbar-end">
-        <a href="" class="navbar-item is-active">
+        <a href="{{ path_for('home') }}" class="navbar-item is-active">
           Home
         </a>
-        <a href="" class="navbar-item is-active">
+        <a href="{{ path_for('auth.login') }}" class="navbar-item is-active">
           Login
         </a>
-        <a href="" class="navbar-item is-active">
+        <a href="{{ path_for('auth.register') }}" class="navbar-item is-active">
           Registrar
         </a>
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">
-              Cristian Pessanha
-            </a>
-            <div class="navbar-dropdown">
-              <a class="navbar-item" href="">
-                Dashboard
-              </a>
-              <a class="navbar-item" href="">
-                  Avatar
-              </a>
-              <hr class="navbar-divider">
-              <a class="navbar-item" href="">
-                Sair
-              </a>
-            </div>
-          </div>    
       </div>
     </div>
   </div>
