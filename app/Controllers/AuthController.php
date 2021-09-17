@@ -6,6 +6,7 @@ use App\Controllers\Controller;
 
 use App\Models\User;
 use App\Models\UserPermission;
+use Respect\Validation\Validator as v;
 use DateTime;
 
 Class AuthController extends Controller
@@ -19,7 +20,17 @@ Class AuthController extends Controller
     public function register($request, $response)
     {
         if($request->isGet())
-        return $this->container->view->render($response, 'register.twig');
+            return $this->container->view->render($response, 'register.twig');
+
+        $validation = $this->container->validator->validate($request,[
+            'name'     => v::notEmpty()->alpha()->length(10), // Validação para não vim vazio, tem que ser alfanumérico e ter no minimo 10 Caracteres
+            'email'    => v::notEmpty()->noWhitespace()->email(), // Validação de email
+            'password' => v::notEmpty()->noWhitespace()
+        ]);
+
+        if($validation->failed())
+            return $response->withRedirect($this->container->router->pathFor('auth.register'));
+        
 
         // ajustando data
         $now = new \DateTime();

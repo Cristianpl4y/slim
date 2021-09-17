@@ -4,7 +4,7 @@ namespace App\Validation;
 
 use Respect\Validation\Exceptions\NestedValidationException;
 
-class Validation
+class Validator
 {
     private $errors;
 
