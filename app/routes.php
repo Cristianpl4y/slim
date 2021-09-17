@@ -8,6 +8,13 @@
  */
 $app->get('/', 'HomeController:index')->setName('home');
 
-//Criando rotas de autenticação 
-$app->get('/login', 'AuthController:login')->setName('auth.login');
-$app->get('/registrar', 'AuthController:register')->setName('auth.register');
+// Criando grupo para rotas especificas.
+// antes sem o grupo a url iria ser assim: http://localhost:8000/login 
+// e agora com o grupo '/auth' fica asssim: http://localhost:8000/auth/login
+$app->group('/auth', function($app){
+    //Criando rotas de autenticação 
+    // Modificando get p/ map para mapear o numero de rotas e passando um array dizendo que essa rota vai aceitar 
+    // GET E POST
+    $app->map(['GET', 'POST'],'/login', 'AuthController:login')->setName('auth.login');
+    $app->map(['GET', 'POST'],'/registrar', 'AuthController:register')->setName('auth.register');
+});
