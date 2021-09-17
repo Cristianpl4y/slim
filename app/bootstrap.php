@@ -8,7 +8,7 @@ require __DIR__ . '/../vendor/autoload.php';
 //Instanciando a Aplicação slim
 $app = new Slim\App([
     'settings' => [
-        'displayErrorDetails' => true
+        'displayErrorDetails' => true,
     ]
 ]);
 
@@ -18,6 +18,21 @@ $app = new Slim\App([
  */
 
 $container = $app->getContainer(); // Aqui crio o Array.
+
+//Fazendo conexão com o meu banco.
+$capsule = new Illuminate\Database\Capsule\Manager;
+$capsule->addConnection([
+    'driver'    => 'mysql', // é banco de dados que estou trabalhando
+    'host'      => 'localhost', // Onde o banco de dados esta hospedado
+    'database'  => 'mpblog', // base de dados
+    'username'  => 'root', // nome do usuario que tem acesso ao banco de dados
+    'password'  => 'root', // senha de acesso do usuario.
+    'charset'   => 'utf8', // passando que quero trabalhar com UTF8
+    'collation' => 'utf8_unicode_ci', // Minha base de dados tbm vai trabalhar com utf8
+    'prefix'    => '',
+]);
+$capsule->setAsGlobal();
+$capsule->bootEloquent();
 
 //configurando o Twig template
 $container['view'] = function($container){
