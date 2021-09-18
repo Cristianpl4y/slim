@@ -4,10 +4,10 @@ namespace App\Middleware;
 
 class  Middleware
 {
-    protected $container;
+    protected $contianer;
 
-    public function __construct($container)
+    public function __construct($contianer)
     {
-        $this->$container = $container; // esta com erro aqui não sei porq !! vou descobrir 
+        $this->contianer = $contianer; // Corrigindo erro $this->$contianer e não $container
     }
 }
