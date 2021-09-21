@@ -42,6 +42,10 @@ $container['flash'] = function($container){
     return new Slim\Flash\Messages;
 };
 
+$container['auth'] = function($container){
+    return new App\Auth\Auth($container);
+};
+
 //configurando o Twig template
 $container['view'] = function($container){
     $view = new Slim\Views\Twig(__DIR__ . '/../resources/views', [
