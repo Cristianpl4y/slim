@@ -19,3 +19,8 @@ $app->group('/auth', function($app){
     $app->map(['GET', 'POST'],'/registrar', 'AuthController:register')->setName('auth.register');
     $app->get('/logout', 'AuthController:logout')->setName('auth.logout');
 });
+
+
+$app->group('/usuario', function($app){
+    $app->map(['GET', 'POST'],'/avatar', 'UserController:avatar')->setName('user.avatar');
+});

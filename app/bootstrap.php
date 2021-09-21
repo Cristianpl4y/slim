@@ -82,6 +82,13 @@ $container['AuthController'] = function($container){
     return new App\Controllers\AuthController($container);
 };
 
+$container['UserController'] = function($container){
+    // retornando a Instacia do meu Controller.
+    return new App\Controllers\UserController($container);
+};
+
+
+
 // Adicionando Middleware porem esta com erro !!!! tem que ver oq é !!!!
 $app->add(new App\Middleware\DisplayInputErrorsMiddleware($container));
 
