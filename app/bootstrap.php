@@ -48,8 +48,6 @@ $container['auth'] = function($container){
 
 $container['upload_directory'] = __DIR__ . '/../public/uploads';
 
-
-
 //configurando o Twig template
 $container['view'] = function($container){
     $view = new Slim\Views\Twig(__DIR__ . '/../resources/views', [
@@ -91,6 +89,10 @@ $container['UserController'] = function($container){
     return new App\Controllers\UserController($container);
 };
 
+$container['PostController'] = function($container){
+    // retornando a Instacia do meu Controller.
+    return new App\Controllers\PostController($container);
+};
 
 
 // Adicionando Middleware porem esta com erro !!!! tem que ver oq é !!!!

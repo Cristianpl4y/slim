@@ -24,3 +24,12 @@ $app->group('/auth', function($app){
 $app->group('/usuario', function($app){
     $app->map(['GET', 'POST'],'/avatar', 'UserController:avatar')->setName('user.avatar');
 });
+
+$app->group('/postagem', function($app){
+    $app->map(['GET', 'POST'],'/criar', 'PostController:create')->setName('post.create');
+    
+    $app->get('/deletar', 'PostController:delete')->setName('post.delete');
+    
+    $app->get('/edit/{id}', 'PostController:edit')->setName('post.edit');
+    $app->post('/edit/{id}', 'PostController:update');
+});
