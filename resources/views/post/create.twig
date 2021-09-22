@@ -33,32 +33,12 @@
               <div class="field is-narrow">
                 <div class="control">
                   <label class="radio">
-                    <input type="radio" value="1" name="status">
+                    <input type="radio" value="1" name="published">
                     Publicado
                   </label>
                   <label class="radio">
-                    <input type="radio" value="0" checked name="status">
+                    <input type="radio" value="0" checked name="published">
                     Rascunho
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="field is-horizontal">
-            <div class="field-label">
-              <label class="label">Destacar</label>
-            </div>
-            <div class="field-body">
-              <div class="field is-narrow">
-                <div class="control">
-                  <label class="radio">
-                    <input type="radio" value="1" checked name="featured">
-                    Sim
-                  </label>
-                  <label class="radio">
-                    <input type="radio" value="0" name="featured">
-                    Não
                   </label>
                 </div>
               </div>
@@ -94,6 +74,7 @@
         </form>
       </div>
     </div>
+     {% include "components/notifications.twig" %}
   </div>
 
 </section>
