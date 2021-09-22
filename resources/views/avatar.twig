@@ -4,7 +4,7 @@
 
 <section class="articles">
     <figure class="image is-128x128 image container">
-      <img class="is-rounded" src="">
+      <img class="is-rounded" src="{{base_url()}}/uploads/{{user.auth.avatar}}">
     </figure>
     <div class="column is-8 is-offset-2">
       <div class="card article">
@@ -35,6 +35,7 @@
           </form>
         </div>
       </div>
+      {% include "components/notifications.twig" %}
     </div>
 
   </section>
