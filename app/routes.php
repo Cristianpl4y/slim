@@ -1,4 +1,6 @@
 <?php
+use App\Middleware\AuthMiddleware;
+
 /**
  *  Entendendo as rotas
  *  Primeiro parametro '/' eu indico o caminho para que o usuario possa acessar.
@@ -32,4 +34,4 @@ $app->group('/postagem', function($app){
     
     $app->get('/edit/{id}', 'PostController:edit')->setName('post.edit');
     $app->post('/edit/{id}', 'PostController:update');
-});
+})->add(new AuthMiddleware($container));

@@ -95,7 +95,7 @@ $container['PostController'] = function($container){
 };
 
 
-// Adicionando Middleware porem esta com erro !!!! tem que ver oq é !!!!
+// Adicionando Middleware 
 $app->add(new App\Middleware\DisplayInputErrorsMiddleware($container));
 
 //Importando o arquivo de rotas
