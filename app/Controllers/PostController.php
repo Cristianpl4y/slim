@@ -34,9 +34,13 @@ class PostController extends Controller
 
     }
    
-    public function edit($request, $response)
+    public function edit($request, $response, $params)
     {
-        return $this->container->view->render($response, 'post/edit.twig');
+        $data = [
+            'post' => Post::find($params['id'])
+        ];
+
+        return $this->container->view->render($response, 'post/edit.twig', $data);
     }
     
     public function update($request, $response)
