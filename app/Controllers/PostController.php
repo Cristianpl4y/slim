@@ -43,8 +43,27 @@ class PostController extends Controller
         return $this->container->view->render($response, 'post/edit.twig', $data);
     }
     
-    public function update($request, $response)
+    public function update($request, $response, $params)
     {
+        $post = Post::find($params['id']);
+
+        $validation = $this->container->validator->validate($request, [
+            'title' => v::length(5)->notEmpty(),
+            'description' => v::notEmpty()
+        ]);
+
+        if($validation->failed()){
+            return $response->withRedirect($this->container->router->pathFor('post.edit', ['id' => $post->id ]));
+        }
+
+        $post->title = $request->getParam('title');
+        $post->description = $request->getParam('description');
+        $post->published = $request->getParam('published');
+        $post->save();
+
+        $this->container->flash->addMessage('success', 'Post atualizado com sucesso!');
+
+        return $response->withRedirect($this->container->router->pathFor('post.edit', ['id' => $post->id ]));
         
     }
     
