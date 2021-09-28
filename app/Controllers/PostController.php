@@ -46,6 +46,16 @@ class PostController extends Controller
     
     public function delete($request, $response)
     {
+        $post = Post::find($request->getParam('id'));
+
+        if($post){
+            $post->delete();
+            $this->container->flash->addMessage('success', 'Post deletado!');
+        }else{
+            $this->container->flash->addMessage('error', 'Post não pode ser deletado!');
+        }
+
+        return $response->withRedirect($this->container->router->pathFor('home'));
         
     }
 }
