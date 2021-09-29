@@ -11,9 +11,6 @@ class AuthMiddleware extends Middleware
             return $response->withRedirect($this->container->router->pathFor('auth.login'));
         } 
         
-        unset($_SESSION['errors']); 
-        
-
         $response = $next($request, $response);
         return $response;
     }

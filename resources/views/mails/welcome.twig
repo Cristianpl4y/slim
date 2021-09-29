@@ -1,13 +1,16 @@
-  <p>Olá, </p>
+{% block content %}
+  
+  <p>Olá, {{ name }}</p>
 
   <p>
     Obrigado por criar o resgistro em nosso blog. Mas para que sua conta seja ativada
-    você deve clicar <a href="">aqui</a> para ativa-la.
+    você deve clicar <a href="http://localhost:8000?confirmation={{confirmation}}">aqui</a> para ativa-la.
   </p>
 
   <br />
 
   <small> 
     Equipe, <br />
-    Marcus Pereira Developer
+    Cristian Pessanha Developer
   </small>
+{% endblock %}

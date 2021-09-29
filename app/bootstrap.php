@@ -42,6 +42,10 @@ $container['flash'] = function($container){
     return new Slim\Flash\Messages;
 };
 
+$container['mail'] = function($container){
+    return new App\Mail($container);
+};
+
 $container['auth'] = function($container){
     return new App\Auth\Auth($container);
 };
